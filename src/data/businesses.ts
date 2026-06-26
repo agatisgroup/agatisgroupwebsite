@@ -34,7 +34,7 @@ export const businesses: Business[] = [
     name: "Digital Media",
     kicker: "Restocked.id",
     description:
-      "A media platform built to be Gen Z's number-one resource for researching the best everyday products to buy — answering what to put back in your pantry, fridge, and snack stash.",
+      "A media platform built to be Gen Z's number-one resource for researching the best everyday products to buy: answering what to put back in your pantry, fridge, and snack stash.",
     href: "https://www.instagram.com/restocked.id",
     external: true,
     cta: "Follow Restocked.id",

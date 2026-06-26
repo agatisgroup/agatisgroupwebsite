@@ -184,7 +184,7 @@
    Scroll-in reveal animation (progressive enhancement)
 --------------------------------------------------------------------------- */
 /* Only hide content once JS is confirmed present (.js added in <head>).
-   Without JS, [data-reveal] elements stay fully visible — no FOUC, no risk
+   Without JS, [data-reveal] elements stay fully visible, no FOUC, no risk
    of permanently invisible content. */
 .js [data-reveal] {
   opacity: 0;

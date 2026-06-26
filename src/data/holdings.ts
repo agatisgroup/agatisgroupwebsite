@@ -13,9 +13,9 @@ export type Holding = {
 export const publicEquity = {
   title: "Public Equity",
   strategy:
-    "Our public equity strategy prioritizes efficient capital allocation. By focusing on minority positions in wonderful public companies, we maintain a lean operational footprint — concentrating our energy on high-level capital allocation rather than the day-to-day management of portfolio companies.",
+    "Our public equity strategy prioritizes efficient capital allocation. By focusing on minority positions in wonderful public companies, we maintain a lean operational footprint, concentrating our energy on high-level capital allocation rather than the day-to-day management of portfolio companies.",
   performanceNote:
-    "Agatis Public Equity significantly outperformed both local and global benchmarks in 2025, delivering a 48.1% return. Despite a brief drawdown in early 2025, the portfolio recovered strongly from March onward and accelerated through the second half of the year — reflecting disciplined stock selection and resilient positioning across market cycles.",
+    "Agatis Public Equity significantly outperformed both local and global benchmarks in 2025, delivering a 48.1% return. Despite a brief drawdown in early 2025, the portfolio recovered strongly from March onward and accelerated through the second half of the year, reflecting disciplined stock selection and resilient positioning across market cycles.",
   performance: {
     year: 2025,
     results: [
@@ -32,7 +32,7 @@ export const publicHoldings: Holding[] = [
     ticker: "ADES",
     sector: "Beverages & Consumer Goods",
     description:
-      "Operates across two business segments — bottling and distribution of drinking water, and manufacturing and trading of food and cosmetic products — in both Indonesia and overseas markets. Its bottled water is distributed under the Nestlé Pure Life and Vica Royal trademarks.",
+      "Operates across two business segments (bottling and distribution of drinking water, and manufacturing and trading of food and cosmetic products) in both Indonesia and overseas markets. Its bottled water is distributed under the Nestlé Pure Life and Vica Royal trademarks.",
   },
   {
     name: "PT Cahaya Aero Services Tbk",
@@ -53,7 +53,7 @@ export const publicHoldings: Holding[] = [
     ticker: "JTPE",
     sector: "Security Printing",
     description:
-      "Produces business forms and security printing products. Its Security segment covers documents requiring special permits — checkbooks, giro forms, and stock certificates — while the Non-Security segment serves general printing needs, sold both domestically and internationally.",
+      "Produces business forms and security printing products. Its Security segment covers documents requiring special permits (checkbooks, giro forms, and stock certificates), while the Non-Security segment serves general printing needs, sold both domestically and internationally.",
   },
   {
     name: "PT Kurniamitra Duta Sentosa Tbk",
@@ -67,21 +67,21 @@ export const publicHoldings: Holding[] = [
     ticker: "MTDL",
     sector: "Information & Communication Technology",
     description:
-      "Operates in the ICT industry through two segments: Distribution — the largest revenue contributor, covering hardware, software, and peripherals — and Solutions & Consulting, spanning maintenance, professional services, system software, and implementation.",
+      "Operates in the ICT industry through two segments: Distribution (the largest revenue contributor, covering hardware, software, and peripherals) and Solutions & Consulting, spanning maintenance, professional services, system software, and implementation.",
   },
   {
     name: "PT Selamat Sempurna Tbk",
     ticker: "SMSM",
     sector: "Automotive Components",
     description:
-      "Manufactures filters, radiators, oil coolers, condensers, fuel tanks, exhaust systems, and press parts. Under its flagship Sakura Filter brand — registered in more than 130 countries — SMSM exports to over 125 countries. Publicly listed on the Indonesia Stock Exchange since 1996.",
+      "Manufactures filters, radiators, oil coolers, condensers, fuel tanks, exhaust systems, and press parts. Under its flagship Sakura Filter brand (registered in more than 130 countries), SMSM exports to over 125 countries. Publicly listed on the Indonesia Stock Exchange since 1996.",
   },
 ];
 
 export const privateEquity = {
   title: "Private Equity",
   strategy:
-    "At our core, we believe in fostering sustainable growth through strategic minority investments in Indonesia's dynamic emerging market. By acquiring non-controlling stakes in high-potential companies, we empower local entrepreneurs — providing capital, expertise, and networks to accelerate expansion without disrupting founder-led governance.",
+    "At our core, we believe in fostering sustainable growth through strategic minority investments in Indonesia's dynamic emerging market. By acquiring non-controlling stakes in high-potential companies, we empower local entrepreneurs, providing capital, expertise, and networks to accelerate expansion without disrupting founder-led governance.",
 } as const;
 
 export const privateHoldings: Holding[] = [
@@ -95,6 +95,6 @@ export const privateHoldings: Holding[] = [
     name: "PT Baterindo Lab Energi",
     sector: "SWAP Energi Indonesia · est. 2019",
     description:
-      "An energy-technology company in the electric-vehicle ecosystem, providing battery-swapping solutions. Founded in 2019, SWAP Energi now operates more than 1,500 battery-swapping stations across Indonesia and is recognized as the Southeast Asian market leader — winner of the World Summit Award (WSA) 2022 in the Environment & Green Energy category.",
+      "An energy-technology company in the electric-vehicle ecosystem, providing battery-swapping solutions. Founded in 2019, SWAP Energi now operates more than 1,500 battery-swapping stations across Indonesia and is recognized as the Southeast Asian market leader, winner of the World Summit Award (WSA) 2022 in the Environment & Green Energy category.",
   },
 ];
