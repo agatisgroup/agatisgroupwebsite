@@ -50,4 +50,4 @@ Logos in `public/` were derived from the source kit at `H:\My Drive\# AGATIS Gro
 ## Not yet set up
 
 - No deployment configured. As a static site, `dist/` deploys to any static host (Netlify/Vercel/Cloudflare Pages). DNS cutover from Google Sites is a separate step.
-- Remote: the repository is intended to live under the **agatisgroup** GitHub account. Add the remote and push when ready.
+- Remote: `origin` → https://github.com/agatisgroup/agatisgroupwebsite (public, branch `master`). Push with `git push`.
