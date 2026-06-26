@@ -1,0 +1,21 @@
+---
+interface Props {
+  bg?: "cream" | "tint" | "white" | "dark";
+  class?: string;
+  id?: string;
+}
+const { bg = "cream", class: className = "", id } = Astro.props;
+
+const bgClass = {
+  cream: "bg-cream text-ink",
+  tint: "bg-brand-tint text-ink",
+  white: "bg-white text-ink",
+  dark: "bg-brand-dark text-cream",
+}[bg];
+---
+
+<section id={id} class:list={["py-20 lg:py-28", bgClass, className]}>
+  <div class="container-x">
+    <slot />
+  </div>
+</section>

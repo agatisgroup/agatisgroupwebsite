@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import Section from "../../components/Section.astro";
+import HoldingCard from "../../components/HoldingCard.astro";
+import CTASection from "../../components/CTASection.astro";
+import { privateEquity, privateHoldings } from "../../data/holdings";
+---
+
+<BaseLayout
+  title="Private Companies"
+  description="Agatis Private Equity makes strategic minority investments in high-potential Indonesian companies, empowering founders with capital, expertise, and networks."
+>
+  <Hero
+    size="sm"
+    eyebrow="Private Equity"
+    title="Empowering founders, without disrupting them."
+    subtitle={privateEquity.strategy}
+  />
+
+  <Section bg="cream">
+    <div class="mb-10 max-w-2xl" data-reveal>
+      <p class="eyebrow">Portfolio</p>
+      <h2 class="mt-5 heading-lg">Our private holdings.</h2>
+      <p class="mt-5 text-ink-soft">
+        Non-controlling stakes in high-potential companies across Indonesia's
+        dynamic emerging market.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        privateHoldings.map((holding, i) => (
+          <HoldingCard holding={holding} index={i} />
+        ))
+      }
+    </div>
+  </Section>
+
+  <CTASection
+    title="Building something exceptional?"
+    subtitle="If you're a founder seeking a long-term, aligned minority partner, we'd love to hear from you."
+  />
+</BaseLayout>

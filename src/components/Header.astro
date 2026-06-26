@@ -1,0 +1,201 @@
+---
+import { nav } from "../data/site";
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path.startsWith(href);
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300"
+>
+  <div
+    class="border-b border-transparent bg-cream/0 transition-[background-color,border-color,backdrop-filter] duration-300"
+    id="header-bar"
+  >
+    <div class="container-x flex h-20 items-center justify-between gap-6">
+      <!-- Logo -->
+      <a href="/" class="flex items-center" aria-label="Agatis Group — home">
+        <img
+          src="/logo-horizontal.png"
+          alt="Agatis Group"
+          width="170"
+          height="48"
+          class="h-9 w-auto md:h-10"
+          loading="eager"
+        />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        {
+          nav.map((item) =>
+            item.children ? (
+              <div class="group relative">
+                <a
+                  href={item.href}
+                  class:list={[
+                    "flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                    isActive(item.href)
+                      ? "text-brand"
+                      : "text-ink/80 hover:text-brand",
+                  ]}
+                >
+                  {item.label}
+                  <svg
+                    class="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-180"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  >
+                    <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+                <div class="invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div class="min-w-56 rounded-2xl border border-line bg-white p-2 shadow-[var(--shadow-card)]">
+                    {item.children.map((child) => (
+                      <a
+                        href={child.href}
+                        class:list={[
+                          "block rounded-xl px-4 py-2.5 text-sm transition-colors",
+                          isActive(child.href)
+                            ? "bg-brand-tint text-brand"
+                            : "text-ink/80 hover:bg-brand-tint hover:text-brand",
+                        ]}
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                class:list={[
+                  "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  isActive(item.href) && !item.external
+                    ? "text-brand"
+                    : "text-ink/80 hover:text-brand",
+                ]}
+              >
+                {item.label}
+              </a>
+            )
+          )
+        }
+        <a href="/contact" class="btn btn-primary ml-3 px-5 py-2.5 text-sm">
+          Get in touch
+        </a>
+      </nav>
+
+      <!-- Mobile toggle -->
+      <button
+        id="menu-toggle"
+        class="relative z-50 flex h-11 w-11 items-center justify-center rounded-full text-ink lg:hidden"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path id="icon-open" d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+          <path id="icon-close" class="hidden" d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="invisible fixed inset-0 top-0 z-40 translate-y-[-8px] bg-cream opacity-0 transition-all duration-300 lg:hidden"
+  >
+    <nav class="container-x flex h-full flex-col gap-1 pt-28 pb-10" aria-label="Mobile">
+      {
+        nav.map((item) => (
+          <div class="border-b border-line/70">
+            <a
+              href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
+              class="block py-4 font-serif text-2xl text-ink"
+            >
+              {item.label}
+            </a>
+            {item.children && (
+              <div class="-mt-1 pb-3 pl-4">
+                {item.children.map((child) => (
+                  <a href={child.href} class="block py-2 text-base text-ink-soft">
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      }
+      <a href="/contact" class="btn btn-primary mt-6 self-start px-6 py-3">
+        Get in touch
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- Spacer so fixed header doesn't overlap content -->
+<div class="h-20" aria-hidden="true"></div>
+
+<script>
+  const bar = document.getElementById("header-bar");
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
+
+  // Scroll-aware background
+  const onScroll = () => {
+    if (!bar) return;
+    if (window.scrollY > 16) {
+      bar.classList.add(
+        "bg-cream/85",
+        "backdrop-blur-md",
+        "border-line",
+        "shadow-[0_1px_0_rgba(6,48,28,0.04)]"
+      );
+    } else {
+      bar.classList.remove(
+        "bg-cream/85",
+        "backdrop-blur-md",
+        "border-line",
+        "shadow-[0_1px_0_rgba(6,48,28,0.04)]"
+      );
+    }
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // Mobile menu
+  let open = false;
+  const setMenu = (next: boolean) => {
+    open = next;
+    toggle?.setAttribute("aria-expanded", String(open));
+    iconOpen?.classList.toggle("hidden", open);
+    iconClose?.classList.toggle("hidden", !open);
+    document.body.style.overflow = open ? "hidden" : "";
+    if (menu) {
+      menu.classList.toggle("invisible", !open);
+      menu.classList.toggle("opacity-0", !open);
+      menu.classList.toggle("translate-y-[-8px]", !open);
+    }
+  };
+  toggle?.addEventListener("click", () => setMenu(!open));
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => setMenu(false))
+  );
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && open) setMenu(false);
+  });
+</script>

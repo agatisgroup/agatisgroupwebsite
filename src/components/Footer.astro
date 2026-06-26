@@ -1,0 +1,110 @@
+---
+import { site, nav, contact, socials } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="relative overflow-hidden bg-brand-dark text-cream/80">
+  <!-- Tree watermark -->
+  <img
+    src="/tree-white.png"
+    alt=""
+    aria-hidden="true"
+    class="pointer-events-none absolute -bottom-16 -right-10 w-80 opacity-[0.04] select-none"
+  />
+
+  <div class="container-x relative py-16 lg:py-20">
+    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
+      <!-- Brand -->
+      <div>
+        <img
+          src="/logo-horizontal-white.png"
+          alt="Agatis Group"
+          width="170"
+          height="60"
+          class="h-11 w-auto"
+        />
+        <p class="mt-5 max-w-sm text-sm leading-relaxed text-cream/65">
+          {site.legalName} — an Indonesia-focused investment company building
+          enduring value through permanent capital and a disciplined, long-term
+          perspective.
+        </p>
+      </div>
+
+      <!-- Navigate -->
+      <div>
+        <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-cream/50">
+          Navigate
+        </h3>
+        <ul class="mt-5 space-y-3 text-sm">
+          {
+            nav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  class="text-cream/75 transition-colors hover:text-white"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-cream/50">
+          Contact
+        </h3>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li>
+            <a
+              href={`mailto:${contact.email}`}
+              class="text-cream/75 transition-colors hover:text-white"
+            >
+              {contact.email}
+            </a>
+          </li>
+          <li>
+            <a
+              href={contact.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-cream/75 transition-colors hover:text-white"
+            >
+              {contact.phone}
+              <span class="text-cream/45">· WhatsApp</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="mt-6 flex gap-3">
+          {
+            socials.map((s) => (
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-cream/70 transition-colors hover:border-white/40 hover:bg-white/5 hover:text-white"
+              >
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d={s.icon} />
+                </svg>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-14 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-7 text-xs text-cream/50 sm:flex-row sm:items-center"
+    >
+      <p>© {year} {site.copyrightHolder}. All rights reserved.</p>
+      <p>Based in Indonesia.</p>
+    </div>
+  </div>
+</footer>

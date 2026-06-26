@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import BusinessPillars from "../components/BusinessPillars.astro";
+import StatBand from "../components/StatBand.astro";
+import CTASection from "../components/CTASection.astro";
+import { publicEquity } from "../data/holdings";
+
+const principles = [
+  "Permanent capital with no fixed horizon",
+  "Disciplined, long-term capital allocation",
+  "Minority stakes in high-quality businesses",
+  "Founder-aligned, entrepreneurial partnership",
+];
+
+const stats = [
+  { value: "20%+", label: "Targeted annual compounding" },
+  { value: "Indonesia", label: "Primary market focus" },
+  { value: "Long-term", label: "Permanent-capital horizon" },
+];
+---
+
+<BaseLayout>
+  <Hero
+    eyebrow="Indonesia-Focused Investment Company"
+    title="Permanent capital for high-quality, long-term growth."
+    subtitle="Agatis Group deploys cash flow from our operating businesses as permanent capital — pursuing high-quality, high-return investments with a disciplined, long-term perspective."
+  >
+    <a slot="actions" href="/investments" class="btn btn-on-dark">
+      Explore our investments
+    </a>
+    <a slot="actions" href="/contact" class="btn btn-outline-light">
+      Get in touch
+    </a>
+  </Hero>
+
+  <!-- About -->
+  <Section bg="cream" id="about">
+    <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      <div data-reveal>
+        <p class="eyebrow">About Us</p>
+        <h2 class="mt-5 heading-lg">
+          A privately held investment company, building for the long term.
+        </h2>
+      </div>
+      <div data-reveal style="--reveal-delay:120ms">
+        <p class="text-lg leading-relaxed text-ink-soft">
+          PT Agatis Investama Abadi (Agatis Group) is a privately held investment
+          company based in Indonesia. We deploy cash flow generated from our
+          operating businesses as permanent capital to pursue high-quality,
+          high-return investments with a disciplined, long-term perspective.
+        </p>
+        <p class="mt-4 leading-relaxed text-ink-soft">
+          Guided by the collective experience, insight, and entrepreneurial
+          vision of our founders and partners, Agatis is committed to building
+          enduring value and driving sustainable growth.
+        </p>
+        <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+          {
+            principles.map((p) => (
+              <li class="flex items-start gap-3 text-sm text-ink">
+                <svg
+                  class="mt-0.5 h-5 w-5 shrink-0 text-brand"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                >
+                  <path
+                    d="m5 13 4 4L19 7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                {p}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div
+      class="mt-16 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-3"
+    >
+      {
+        stats.map((s, i) => (
+          <div
+            class="bg-white p-8 text-center"
+            data-reveal
+            style={`--reveal-delay:${i * 90}ms`}
+          >
+            <p class="font-serif text-4xl text-brand lg:text-5xl">{s.value}</p>
+            <p class="mt-2 text-sm text-ink-soft">{s.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Our Business -->
+  <Section bg="tint" id="business">
+    <div class="max-w-2xl" data-reveal>
+      <p class="eyebrow">Our Business</p>
+      <h2 class="mt-5 heading-lg">Three arms, one disciplined philosophy.</h2>
+      <p class="mt-5 text-ink-soft">
+        From permanent-capital investing to building brands and media, every part
+        of Agatis is oriented toward creating enduring value.
+      </p>
+    </div>
+    <div class="mt-12">
+      <BusinessPillars />
+    </div>
+  </Section>
+
+  <!-- Performance teaser -->
+  <Section bg="cream" id="performance">
+    <div class="mb-10 max-w-2xl" data-reveal>
+      <p class="eyebrow">Track Record</p>
+      <h2 class="mt-5 heading-lg">Disciplined allocation, measurable results.</h2>
+      <p class="mt-5 text-ink-soft">
+        In {publicEquity.performance.year}, Agatis Public Equity meaningfully
+        outperformed both local and global benchmarks — a reflection of patient,
+        high-conviction stock selection.
+      </p>
+    </div>
+    <StatBand
+      year={publicEquity.performance.year}
+      results={publicEquity.performance.results}
+    />
+    <div class="mt-8" data-reveal>
+      <a
+        href="/investments/public-companies"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-brand"
+      >
+        See the public portfolio
+        <svg
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+        >
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

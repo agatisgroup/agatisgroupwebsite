@@ -1,0 +1,31 @@
+---
+import type { Holding } from "../data/holdings";
+interface Props {
+  holding: Holding;
+  index?: number;
+}
+const { holding, index = 0 } = Astro.props;
+---
+
+<article
+  class="group flex h-full flex-col rounded-3xl border border-line bg-white p-7 shadow-[var(--shadow-card)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-[var(--shadow-card-hover)]"
+  data-reveal
+  style={`--reveal-delay:${(index % 3) * 80}ms`}
+>
+  <div class="flex items-start justify-between gap-4">
+    <p class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-soft">
+      {holding.sector}
+    </p>
+    {
+      holding.ticker && (
+        <span class="shrink-0 rounded-md bg-brand-tint px-2.5 py-1 font-sans text-xs font-bold tracking-wide text-brand">
+          {holding.ticker}
+        </span>
+      )
+    }
+  </div>
+  <h3 class="mt-3 font-serif text-xl leading-snug text-ink">{holding.name}</h3>
+  <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">
+    {holding.description}
+  </p>
+</article>

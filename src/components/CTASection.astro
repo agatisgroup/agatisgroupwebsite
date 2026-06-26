@@ -1,0 +1,49 @@
+---
+import { contact } from "../data/site";
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+const {
+  title = "Let's build enduring value together.",
+  subtitle = "We welcome conversations around co-investment and collaboration opportunities. Reach out to start the dialogue.",
+} = Astro.props;
+---
+
+<section class="bg-cream pb-20 lg:pb-28">
+  <div class="container-x">
+    <div
+      class="relative isolate overflow-hidden rounded-[2rem] bg-brand-dark px-7 py-14 text-cream lg:px-16 lg:py-20"
+      data-reveal
+    >
+      <div
+        class="pointer-events-none absolute -right-10 -top-24 -z-10 h-96 w-96 rounded-full bg-brand/30 blur-3xl"
+        aria-hidden="true"
+      >
+      </div>
+      <img
+        src="/tree-white.png"
+        alt=""
+        aria-hidden="true"
+        class="pointer-events-none absolute -bottom-20 right-4 -z-10 w-72 select-none opacity-[0.07]"
+      />
+
+      <div class="max-w-2xl">
+        <p class="eyebrow eyebrow--invert">Get in touch</p>
+        <h2 class="mt-5 heading-lg font-serif text-white">{title}</h2>
+        <p class="mt-5 max-w-xl text-cream/75">{subtitle}</p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-on-dark px-6 py-3">Contact us</a>
+          <a
+            href={contact.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline-light px-6 py-3"
+          >
+            Message on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

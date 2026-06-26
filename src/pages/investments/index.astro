@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import Section from "../../components/Section.astro";
+import CTASection from "../../components/CTASection.astro";
+import {
+  publicEquity,
+  privateEquity,
+  publicHoldings,
+  privateHoldings,
+} from "../../data/holdings";
+
+const areas = [
+  {
+    href: "/investments/public-companies",
+    label: "Public Equity",
+    title: "Public Companies",
+    description: publicEquity.strategy,
+    count: `${publicHoldings.length} listed holdings`,
+  },
+  {
+    href: "/investments/private-companies",
+    label: "Private Equity",
+    title: "Private Companies",
+    description: privateEquity.strategy,
+    count: `${privateHoldings.length} private holdings`,
+  },
+];
+---
+
+<BaseLayout
+  title="Our Investments"
+  description="Agatis Group's investments span two business areas — public and private companies — united by a disciplined, minority-stake approach to compounding capital in Indonesia."
+>
+  <Hero
+    size="sm"
+    eyebrow="Our Investments"
+    title="Two avenues to compound capital."
+    subtitle="Agatis's investments are divided into two business areas — Public Companies and Private Companies — each pursuing minority stakes in high-quality businesses with strong management and long-term growth potential."
+  />
+
+  <Section bg="cream">
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        areas.map((a, i) => (
+          <a
+            href={a.href}
+            class="group relative flex flex-col overflow-hidden rounded-3xl border border-line bg-white p-8 shadow-[var(--shadow-card)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-[var(--shadow-card-hover)] lg:p-10"
+            data-reveal
+            style={`--reveal-delay:${i * 110}ms`}
+          >
+            <img
+              src="/tree-black.png"
+              alt=""
+              aria-hidden="true"
+              class="pointer-events-none absolute -right-8 -top-8 w-40 select-none opacity-[0.04] transition-opacity duration-300 group-hover:opacity-[0.07]"
+            />
+            <p class="eyebrow">{a.label}</p>
+            <h2 class="mt-4 font-serif text-3xl text-ink">{a.title}</h2>
+            <p class="mt-4 flex-1 text-sm leading-relaxed text-ink-soft">
+              {a.description}
+            </p>
+            <div class="mt-8 flex items-center justify-between">
+              <span class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-soft">
+                {a.count}
+              </span>
+              <span class="inline-flex items-center gap-2 text-sm font-semibold text-brand">
+                View portfolio
+                <svg
+                  class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                >
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <CTASection
+    title="Exploring a co-investment?"
+    subtitle="We welcome conversations around co-investment and collaboration opportunities across both public and private markets."
+  />
+</BaseLayout>

@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import Section from "../../components/Section.astro";
+import StatBand from "../../components/StatBand.astro";
+import HoldingCard from "../../components/HoldingCard.astro";
+import CTASection from "../../components/CTASection.astro";
+import { publicEquity, publicHoldings } from "../../data/holdings";
+---
+
+<BaseLayout
+  title="Public Companies"
+  description="Agatis Public Equity takes minority positions in high-quality listed Indonesian companies, prioritizing efficient capital allocation. The portfolio returned 48.1% in 2025."
+>
+  <Hero
+    size="sm"
+    eyebrow="Public Equity"
+    title="Minority stakes in wonderful public companies."
+    subtitle={publicEquity.strategy}
+  />
+
+  <!-- Performance -->
+  <Section bg="cream">
+    <div class="mb-10 max-w-2xl" data-reveal>
+      <p class="eyebrow">2025 Performance</p>
+      <h2 class="mt-5 heading-lg">Outperforming local and global benchmarks.</h2>
+    </div>
+    <StatBand
+      year={publicEquity.performance.year}
+      results={publicEquity.performance.results}
+      note={publicEquity.performanceNote}
+    />
+  </Section>
+
+  <!-- Holdings -->
+  <Section bg="tint">
+    <div class="mb-10 max-w-2xl" data-reveal>
+      <p class="eyebrow">Portfolio</p>
+      <h2 class="mt-5 heading-lg">Our public holdings.</h2>
+      <p class="mt-5 text-ink-soft">
+        A concentrated set of listed Indonesian businesses with durable
+        franchises and strong management teams.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        publicHoldings.map((holding, i) => (
+          <HoldingCard holding={holding} index={i} />
+        ))
+      }
+    </div>
+  </Section>
+
+  <CTASection />
+</BaseLayout>
