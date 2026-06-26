@@ -47,7 +47,10 @@ Scroll-in animations use `[data-reveal]` + an IntersectionObserver in `BaseLayou
 
 Logos in `public/` were derived from the source kit at `H:\My Drive\# AGATIS Group Logo\Agatis Holding` (white Agathis-tree-in-green-circle + AGATIS wordmark): `logo-horizontal.png` (light bg), `logo-horizontal-white.png` (dark bg), `tree-white.png`/`tree-black.png` (watermark motif), `favicon.png`, `apple-touch-icon.png`, `og-image.png`.
 
-## Not yet set up
+## Deployment
 
-- No deployment configured. As a static site, `dist/` deploys to any static host (Netlify/Vercel/Cloudflare Pages). DNS cutover from Google Sites is a separate step.
+- Hosted on **Cloudflare Pages** (project `agatisgroupwebsite`), Git-connected. Every push to `master` auto-builds (`npm run build`) and deploys. No manual step.
+- **Node is pinned to 22 via `.nvmrc`**: Astro 7 requires Node >=22.12.0, so a Node 20 build environment fails. Do not lower it.
+- Live at `www.agatisgroup.com` (canonical) and apex `agatisgroup.com`. DNS and SSL are managed by Cloudflare (the zone is already on Cloudflare). Temp URL: `agatisgroupwebsite.pages.dev`.
+- Do NOT touch the `agatisgroup.com` MX records: email runs on Cloudflare Email Routing, separate from the web records.
 - Remote: `origin` → https://github.com/agatisgroup/agatisgroupwebsite (public, branch `master`). Push with `git push`.
