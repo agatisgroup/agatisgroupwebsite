@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Marketing website for **Agatis Group (PT Agatis Investama Abadi)**, an Indonesia-focused investment holding company. This is a redesign of the previous Google Sites site (agatisgroup.com), rebuilt as a statically-generated **Astro** site with a "refined institutional" aesthetic.
+Website for **Agatis Group (PT Agatis Investama Abadi)**, an Indonesia-focused investment holding company. This is a redesign of the previous Google Sites site (agatisgroup.com), rebuilt as a statically-generated **Astro** site with a "refined institutional" aesthetic.
 
 ## Commands
 
