@@ -1,6 +1,6 @@
 # Agatis Group Website
 
-Marketing website for **Agatis Group (PT Agatis Investama Abadi)**, an Indonesia-focused investment holding company.
+Website for **Agatis Group (PT Agatis Investama Abadi)**, an Indonesia-focused investment holding company.
 
 **Live:** [www.agatisgroup.com](https://www.agatisgroup.com)
 
